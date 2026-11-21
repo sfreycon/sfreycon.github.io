@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="A local beekeeper portfolio for sustainably raised honey and hive services.">
-  <title>Golden Hour Apiary</title>
+  <meta name="description" content="Portfolio de Loïc Gaulard, apiculteur à Rochetaillée — miel local, élevage des ruches et conseils autour des abeilles.">
+  <title>La Miellerie des Séquoias — Loïc Gaulard</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;600&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
@@ -128,6 +128,13 @@
     }
     .contact h2 { font-size: clamp(2.4rem, 6vw, 5rem); margin: .2em 0 .4em; }
     .contact p { max-width: 560px; margin: 0 auto 1.5rem; }
+    .contact-details {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: .75rem 1.5rem;
+      margin: 1.5rem auto 0;
+    }
 
     footer {
       display: flex;
@@ -151,10 +158,10 @@
   </style>
 </head>
 <body>
-  <nav aria-label="Main navigation">
-    <div class="brand">Golden Hour Apiary</div>
+  <nav aria-label="Navigation principale">
+    <div class="brand">La Miellerie des Séquoias</div>
     <ul>
-      <li><a href="#about">About</a></li>
+      <li><a href="#about">À propos</a></li>
       <li><a href="#services">Services</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
@@ -162,71 +169,75 @@
 
   <header class="hero">
     <div class="hero-inner">
-      <span class="eyebrow">Small-batch · Local · Naturally sweet</span>
-      <h1>Life is sweeter with bees.</h1>
-      <p>Thoughtful beekeeping, seasonal raw honey, and a deeper connection to the landscape around us.</p>
-      <a class="button" href="#contact">Ask about honey</a>
+      <span class="eyebrow">Miel local · Petite production · Naturellement doux</span>
+      <h1>La vie est plus douce avec les abeilles.</h1>
+      <p>Un élevage respectueux, un miel saisonnier et un lien précieux avec les paysages qui nous entourent.</p>
+      <a class="button" href="#contact">Renseigner-vous sur le miel</a>
     </div>
   </header>
 
   <main>
     <section class="about" id="about">
-      <div class="about-photo" role="img" aria-label="Beekeeper working beside a hive"></div>
+      <div class="about-photo" role="img" aria-label="Apiculteur travaillant auprès d'une ruche"></div>
       <div class="about-copy">
-        <span class="eyebrow">Meet the beekeeper</span>
-        <h2>Healthy hives, honest honey.</h2>
-        <p>Golden Hour Apiary is a small, community-minded beekeeping practice built around the wellbeing of bees and the beauty of local forage.</p>
-        <p>From first swarm to final jar, every hive is tended with patience, care, and respect for the season.</p>
+        <span class="eyebrow">Rencontrez l'apiculteur</span>
+        <h2>Des ruches en bonne santé, un miel sincère.</h2>
+        <p>Je suis Loïc Gaulard, apiculteur passionné à Rochetaillée. À travers La Miellerie des Séquoias, je veille sur mes ruches avec patience et respect du rythme des saisons.</p>
+        <p>De l'essaim au pot, chaque geste est pensé pour le bien-être des abeilles et la qualité d'un miel authentique.</p>
       </div>
     </section>
 
     <section class="services" id="services">
       <div class="section-heading">
-        <span class="eyebrow">How I can help</span>
-        <h2>Bees, honey &amp; education.</h2>
+        <span class="eyebrow">Comment je peux vous aider</span>
+        <h2>Les abeilles, le miel &amp; la transmission.</h2>
       </div>
       <div class="service-grid">
         <article class="service-card">
           <span>01</span>
-          <h3>Raw honey</h3>
-          <p>Unfiltered, seasonal honey collected in small batches. Ask about current flavors and availability.</p>
+          <h3>Miel brut</h3>
+          <p>Miel non filtré et saisonnier, récolté en petites quantités. Renseignez-vous sur les saveurs et disponibilités actuelles.</p>
         </article>
         <article class="service-card">
           <span>02</span>
-          <h3>Hive care</h3>
-          <p>Responsible colony support and practical guidance to help local hives thrive throughout the year.</p>
+          <h3>Soins aux ruches</h3>
+          <p>Accompagnement responsable des colonies et conseils pratiques pour aider les ruches à traverser les saisons.</p>
         </article>
         <article class="service-card">
           <span>03</span>
-          <h3>Bee education</h3>
-          <p>Friendly, hands-on sessions for curious adults, schools, and community groups.</p>
+          <h3>Découverte des abeilles</h3>
+          <p>Échanges et ateliers accessibles pour les amateurs, les écoles et les groupes locaux curieux de découvrir l'apiculture.</p>
         </article>
       </div>
     </section>
 
     <section>
       <div class="section-heading">
-        <span class="eyebrow">From the apiary</span>
-        <h2>A season at the hives.</h2>
+        <span class="eyebrow">Depuis le rucher</span>
+        <h2>Une saison au rythme des ruches.</h2>
       </div>
       <div class="gallery-grid">
-        <figure><img src="https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?auto=format&fit=crop&w=1000&q=85" alt="Beekeeper inspecting a hive"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=900&q=85" alt="Fresh honey in a jar"></figure>
-        <figure><img src="https://images.unsplash.com/photo-1535656902397-e552a5b38d35?auto=format&fit=crop&w=900&q=85" alt="Honeycomb with bees"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1473973266408-ed4e27abdd47?auto=format&fit=crop&w=1000&q=85" alt="Apiculteur inspectant une ruche"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?auto=format&fit=crop&w=900&q=85" alt="Miel frais dans un pot"></figure>
+        <figure><img src="https://images.unsplash.com/photo-1535656902397-e552a5b38d35?auto=format&fit=crop&w=900&q=85" alt="Rayon de miel avec des abeilles"></figure>
       </div>
     </section>
 
     <section class="contact" id="contact">
-      <span class="eyebrow">Let’s talk bees</span>
-      <h2>Interested in local honey?</h2>
-      <p>Send a note for availability, hive questions, or speaking and workshop requests.</p>
-      <a class="button" href="mailto:hello@example.com">hello@example.com</a>
+      <span class="eyebrow">Parlons abeilles</span>
+      <h2>Envie de découvrir le miel local ?</h2>
+      <p>Contactez-moi pour connaître les disponibilités, poser une question sur les ruches ou organiser une visite ou un atelier.</p>
+      <a class="button" href="mailto:lamielleriedessequoias@gmail.com">lamielleriedessequoias@gmail.com</a>
+      <div class="contact-details">
+        <a href="tel:+33665565531">06 65 56 55 31</a>
+        <address>513 Chemin de la Violette<br>42100 Rochetaillée, France</address>
+      </div>
     </section>
   </main>
 
   <footer>
-    <span>© 2026 Golden Hour Apiary</span>
-    <span>Kind to bees. Good for the land.</span>
+    <span>© 2026 La Miellerie des Séquoias</span>
+    <span>Loïc Gaulard · Apiculteur</span>
   </footer>
 </body>
 </html>

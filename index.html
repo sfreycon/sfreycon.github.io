@@ -10,225 +10,199 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --cream: #f8f3e7;
-      --paper: #fffdf8;
-      --gold: #efb642;
-      --amber: #a85e24;
-      --ink: #292d26;
-      --green: #364d3d;
-      --muted: #6b7065;
-      --line: #ded8c9;
+    :root { --cream:#f8f3e7; --paper:#fffdf8; --gold:#efb642; --amber:#a85e24; --ink:#292d26; --green:#364d3d; --muted:#6b7065; --line:#ded8c9; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:"DM Sans",sans-serif; line-height:1.65; }
+    img { display:block; max-width:100%; }
+    a { color:inherit; }
+    h1,h2,h3 { font-family:"Fraunces",serif; line-height:1.12; }
+    h2 { font-size:clamp(2.2rem,5vw,4rem); margin:.25em 0 .45em; }
+    .wrap { width:min(1120px,90%); margin-inline:auto; }
+    .eyebrow { color:var(--amber); text-transform:uppercase; letter-spacing:.16em; font-size:.74rem; font-weight:700; }
+    .topbar { background:var(--green); color:white; font-size:.86rem; }
+    .topbar .wrap { min-height:38px; display:flex; align-items:center; justify-content:space-between; gap:1rem; }
+    .topbar a { text-decoration:none; }
+    header { background:var(--cream); }
+    .header-inner { min-height:82px; display:flex; align-items:center; justify-content:space-between; gap:2rem; }
+    .brand { display:flex; align-items:center; gap:.8rem; text-decoration:none; font-family:"Fraunces",serif; font-weight:700; font-size:1.2rem; }
+    .brand-mark { width:42px; height:42px; border-radius:50%; display:grid; place-items:center; background:var(--gold); color:var(--green); font-size:1.35rem; }
+    nav ul { display:flex; align-items:center; gap:1.5rem; list-style:none; padding:0; margin:0; }
+    nav a { text-decoration:none; font-size:.94rem; font-weight:600; }
+    nav a:hover,.topbar a:hover { color:var(--amber); }
+    .hero { display:grid; grid-template-columns:1fr 1fr; min-height:540px; background:var(--cream); }
+    .hero-copy { display:flex; flex-direction:column; justify-content:center; padding:5rem max(5vw,calc((100vw - 1120px)/2)); padding-right:4rem; }
+    .hero h1 { font-size:clamp(3rem,6vw,5.7rem); margin:.25em 0; letter-spacing:-.035em; }
+    .hero-copy p { max-width:520px; font-size:1.08rem; color:#555b50; }
+    .hero-image { min-height:440px; background:linear-gradient(0deg,rgba(28,37,29,.12),transparent),url("images/B3A7053.jpeg") center/cover no-repeat; }
+    .button { display:inline-flex; align-items:center; justify-content:center; width:fit-content; margin-top:1rem; padding:.8rem 1.25rem; border-radius:4px; background:var(--green); color:white; font-weight:700; text-decoration:none; transition:background .2s,transform .2s; }
+    .button:hover { background:var(--amber); transform:translateY(-2px); }
+    section { padding:5rem 0; }
+    .intro { display:grid; grid-template-columns:.85fr 1.15fr; align-items:center; gap:clamp(2rem,7vw,6rem); }
+    .portrait { height:440px; width:100%; object-fit:cover; object-position:center 30%; border-radius:180px 180px 8px 8px; }
+    .intro-copy p { color:#555b50; }
+    .intro-copy .signature { color:var(--green); font-family:"Fraunces",serif; font-size:1.35rem; font-weight:700; }
+    .products-section { background:var(--cream); }
+    .section-lead { max-width:680px; margin-bottom:2.3rem; }
+    .section-lead p { color:var(--muted); }
+    .carousel { position:relative; }
+    .products { display:grid; grid-auto-columns:calc((100% - 2.3rem)/3); grid-auto-flow:column; gap:1.15rem; overflow-x:auto; scroll-snap-type:x mandatory; scroll-behavior:smooth; scrollbar-width:thin; scrollbar-color:var(--amber) transparent; padding:0 0 1rem; }
+    .product { min-width:0; background:var(--paper); border:1px solid var(--line); scroll-snap-align:start; }
+    .product img { width:100%; height:230px; object-fit:cover; }
+    .product-copy { padding:1.25rem 1.35rem 1.5rem; }
+    .product h3 { margin:0 0 .45rem; font-size:1.45rem; }
+    .product p { color:var(--muted); margin:0; font-size:.95rem; }
+    .product-label { display:inline-block; margin-bottom:.6rem; color:var(--amber); text-transform:uppercase; letter-spacing:.12em; font-size:.7rem; font-weight:700; }
+    .carousel-controls { display:flex; align-items:center; justify-content:space-between; gap:1rem; margin-top:1.1rem; }
+    .carousel-buttons { display:flex; gap:.6rem; }
+    .carousel-button { width:44px; height:44px; display:grid; place-items:center; border:1px solid var(--green); border-radius:50%; background:transparent; color:var(--green); font-size:1.25rem; cursor:pointer; }
+    .carousel-button:hover { background:var(--green); color:white; }
+    .carousel-button:focus-visible,.carousel-dot:focus-visible { outline:3px solid var(--amber); outline-offset:3px; }
+    .carousel-dots { display:flex; justify-content:center; gap:.5rem; }
+    .carousel-dot { width:10px; height:10px; padding:0; border:0; border-radius:50%; background:#c9c4b8; cursor:pointer; }
+    .carousel-dot[aria-current="true"] { background:var(--green); transform:scale(1.2); }
+    .feature { display:grid; grid-template-columns:1.1fr .9fr; background:var(--green); color:white; }
+    .feature-image { min-height:400px; width:100%; height:100%; object-fit:cover; }
+    .feature-copy { align-self:center; padding:3.5rem clamp(2rem,6vw,5rem); }
+    .feature-copy .eyebrow { color:var(--gold); }
+    .feature-copy p { color:rgba(255,255,255,.82); }
+    .feature-copy h2 { font-size:clamp(2.1rem,4vw,3.5rem); }
+    .feature-copy .button { background:var(--gold); color:var(--ink); }
+    .feature-copy .button:hover { background:white; }
+    .sales { display:grid; grid-template-columns:1fr 1fr; gap:3rem; align-items:start; }
+    .sales-intro { max-width:520px; }
+    .sales-intro p { color:var(--muted); }
+    .sales-cards { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .sales-card { border-top:2px solid var(--gold); padding-top:1rem; }
+    .sales-card h3 { margin:.2rem 0 .5rem; font-size:1.35rem; }
+    .sales-card p { margin:0; color:var(--muted); font-size:.93rem; }
+    .market-strip { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; margin-top:2rem; }
+    .market-strip img { width:100%; height:210px; object-fit:cover; }
+    .market-strip figure { margin:0; }
+    .market-strip figcaption { padding-top:.5rem; font-size:.86rem; color:var(--muted); }
+    .contact { background:var(--cream); text-align:center; }
+    .contact .wrap { max-width:800px; }
+    .contact p { color:var(--muted); }
+    .contact-actions { display:flex; justify-content:center; flex-wrap:wrap; gap:.8rem; margin-top:1.5rem; }
+    .contact-actions .button { margin:0; }
+    .button.secondary { background:transparent; border:1px solid var(--green); color:var(--green); }
+    .button.secondary:hover { background:var(--green); color:white; }
+    .address { margin-top:1.8rem; font-style:normal; }
+    footer { background:var(--green); color:white; padding:1.4rem 0; font-size:.88rem; }
+    footer .wrap { display:flex; justify-content:space-between; gap:1rem; }
+    footer a { color:white; }
+    @media(max-width:800px) {
+      .topbar .wrap { justify-content:center; }
+      .topbar .top-location { display:none; }
+      .header-inner { min-height:72px; }
+      nav ul { gap:.8rem; }
+      nav a { font-size:.82rem; }
+      .hero { grid-template-columns:1fr; }
+      .hero-copy { padding:4rem 5%; }
+      .hero-image { min-height:380px; }
+      .intro,.sales { grid-template-columns:1fr; }
+      .portrait { height:min(115vw,520px); }
+      .products { grid-auto-columns:calc((100% - 1.15rem)/2); }
+      .feature { grid-template-columns:1fr; }
+      .feature-image { max-height:420px; }
+      .market-strip { grid-template-columns:repeat(2,1fr); }
     }
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body { margin: 0; color: var(--ink); background: var(--paper); font-family: "DM Sans", sans-serif; line-height: 1.65; }
-    img { display: block; max-width: 100%; }
-    a { color: inherit; }
-    h1, h2, h3 { font-family: "Fraunces", serif; line-height: 1.12; }
-    h2 { font-size: clamp(2.2rem, 5vw, 4rem); margin: .25em 0 .45em; }
-    .wrap { width: min(1120px, 90%); margin-inline: auto; }
-    .eyebrow { color: var(--amber); text-transform: uppercase; letter-spacing: .16em; font-size: .74rem; font-weight: 700; }
-    .topbar { background: var(--green); color: white; font-size: .86rem; }
-    .topbar .wrap { min-height: 38px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .topbar a { text-decoration: none; }
-    header { background: var(--cream); }
-    .header-inner { min-height: 82px; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-    .brand { display: flex; align-items: center; gap: .8rem; text-decoration: none; font-family: "Fraunces", serif; font-weight: 700; font-size: 1.2rem; }
-    .brand-mark { width: 42px; height: 42px; border-radius: 50%; display: grid; place-items: center; background: var(--gold); color: var(--green); font-size: 1.35rem; }
-    nav ul { display: flex; align-items: center; gap: 1.5rem; list-style: none; padding: 0; margin: 0; }
-    nav a { text-decoration: none; font-size: .94rem; font-weight: 600; }
-    nav a:hover, .topbar a:hover { color: var(--amber); }
-    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 540px; background: var(--cream); }
-    .hero-copy { display: flex; flex-direction: column; justify-content: center; padding: 5rem max(5vw, calc((100vw - 1120px)/2)); padding-right: 4rem; }
-    .hero h1 { font-size: clamp(3rem, 6vw, 5.7rem); margin: .25em 0; letter-spacing: -.035em; }
-    .hero-copy p { max-width: 520px; font-size: 1.08rem; color: #555b50; }
-    .hero-image { min-height: 440px; background: linear-gradient(0deg, rgba(28,37,29,.12), transparent), url("images/B3A7053.jpeg") center/cover no-repeat; }
-    .button { display: inline-flex; align-items: center; justify-content: center; width: fit-content; margin-top: 1rem; padding: .8rem 1.25rem; border-radius: 4px; background: var(--green); color: white; font-weight: 700; text-decoration: none; transition: background .2s, transform .2s; }
-    .button:hover { background: var(--amber); transform: translateY(-2px); }
-    section { padding: 5rem 0; }
-    .intro { display: grid; grid-template-columns: .85fr 1.15fr; align-items: center; gap: clamp(2rem, 7vw, 6rem); }
-    .portrait { height: 440px; width: 100%; object-fit: cover; object-position: center 30%; border-radius: 180px 180px 8px 8px; }
-    .intro-copy p { color: #555b50; }
-    .intro-copy .signature { color: var(--green); font-family: "Fraunces", serif; font-size: 1.35rem; font-weight: 700; }
-    .products-section { background: var(--cream); }
-    .section-lead { max-width: 680px; margin-bottom: 2.3rem; }
-    .section-lead p { color: var(--muted); }
-    .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.15rem; }
-    .product { background: var(--paper); border: 1px solid var(--line); }
-    .product img { width: 100%; height: 230px; object-fit: cover; }
-    .product-copy { padding: 1.25rem 1.35rem 1.5rem; }
-    .product h3 { margin: 0 0 .45rem; font-size: 1.45rem; }
-    .product p { color: var(--muted); margin: 0; font-size: .95rem; }
-    .product-label { display: inline-block; margin-bottom: .6rem; color: var(--amber); text-transform: uppercase; letter-spacing: .12em; font-size: .7rem; font-weight: 700; }
-    .feature { display: grid; grid-template-columns: 1.1fr .9fr; background: var(--green); color: white; }
-    .feature-image { min-height: 400px; width: 100%; height: 100%; object-fit: cover; }
-    .feature-copy { align-self: center; padding: 3.5rem clamp(2rem, 6vw, 5rem); }
-    .feature-copy .eyebrow { color: var(--gold); }
-    .feature-copy p { color: rgba(255,255,255,.82); }
-    .feature-copy h2 { font-size: clamp(2.1rem, 4vw, 3.5rem); }
-    .feature-copy .button { background: var(--gold); color: var(--ink); }
-    .feature-copy .button:hover { background: white; }
-    .sales { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: start; }
-    .sales-intro { max-width: 520px; }
-    .sales-intro p { color: var(--muted); }
-    .sales-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .sales-card { border-top: 2px solid var(--gold); padding-top: 1rem; }
-    .sales-card h3 { margin: .2rem 0 .5rem; font-size: 1.35rem; }
-    .sales-card p { margin: 0; color: var(--muted); font-size: .93rem; }
-    .market-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
-    .market-strip img { width: 100%; height: 210px; object-fit: cover; }
-    .market-strip figure { margin: 0; }
-    .market-strip figcaption { padding-top: .5rem; font-size: .86rem; color: var(--muted); }
-    .contact { background: var(--cream); text-align: center; }
-    .contact .wrap { max-width: 800px; }
-    .contact p { color: var(--muted); }
-    .contact-actions { display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem; margin-top: 1.5rem; }
-    .contact-actions .button { margin: 0; }
-    .button.secondary { background: transparent; border: 1px solid var(--green); color: var(--green); }
-    .button.secondary:hover { background: var(--green); color: white; }
-    .address { margin-top: 1.8rem; font-style: normal; }
-    footer { background: var(--green); color: white; padding: 1.4rem 0; font-size: .88rem; }
-    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; }
-    footer a { color: white; }
-    @media (max-width: 800px) {
-      .topbar .wrap { justify-content: center; }
-      .topbar .top-location { display: none; }
-      .header-inner { min-height: 72px; }
-      nav ul { gap: .8rem; }
-      nav a { font-size: .82rem; }
-      .hero { grid-template-columns: 1fr; }
-      .hero-copy { padding: 4rem 5%; }
-      .hero-image { min-height: 380px; }
-      .intro, .sales { grid-template-columns: 1fr; }
-      .portrait { height: min(115vw, 520px); }
-      .products { grid-template-columns: repeat(2, 1fr); }
-      .feature { grid-template-columns: 1fr; }
-      .feature-image { max-height: 420px; }
-      .market-strip { grid-template-columns: repeat(2, 1fr); }
+    @media(max-width:540px) {
+      .header-inner { align-items:flex-start; flex-direction:column; padding:1rem 0; gap:.8rem; }
+      nav { width:100%; overflow-x:auto; }
+      nav ul { width:max-content; }
+      .brand { font-size:1.05rem; }
+      .hero-copy { padding:3.5rem 5%; }
+      .hero-image { min-height:300px; }
+      .products { grid-auto-columns:88%; }
+      .sales-cards,.market-strip { grid-template-columns:1fr; }
+      .product img { height:250px; }
+      .market-strip img { height:240px; }
+      section { padding:3.8rem 0; }
+      footer .wrap { flex-direction:column; }
     }
-    @media (max-width: 540px) {
-      .header-inner { align-items: flex-start; flex-direction: column; padding: 1rem 0; gap: .8rem; }
-      nav { width: 100%; overflow-x: auto; }
-      nav ul { width: max-content; }
-      .brand { font-size: 1.05rem; }
-      .hero-copy { padding: 3.5rem 5%; }
-      .hero-image { min-height: 300px; }
-      .products, .sales-cards, .market-strip { grid-template-columns: 1fr; }
-      .product img { height: 250px; }
-      .market-strip img { height: 240px; }
-      section { padding: 3.8rem 0; }
-      footer .wrap { flex-direction: column; }
-    }
+    @media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .products { scroll-behavior:auto; } }
   </style>
 </head>
 <body>
-  <div class="topbar">
-    <div class="wrap">
-      <span class="top-location">Rochetaillée · Parc naturel régional du Pilat</span>
-      <span><a href="tel:+33665565531">06 65 56 55 31</a> · <a href="mailto:lamielleriedessequoias@gmail.com">Nous contacter</a></span>
-    </div>
-  </div>
-  <header>
-    <div class="wrap header-inner">
-      <a class="brand" href="#accueil"><span class="brand-mark" aria-hidden="true">✿</span><span>La Miellerie des Séquoias</span></a>
-      <nav aria-label="Navigation principale">
-        <ul><li><a href="#apiculteur">L'apiculteur</a></li><li><a href="#produits">Nos produits</a></li><li><a href="#vente">Où nous trouver</a></li><li><a href="#contact">Contact</a></li></ul>
-      </nav>
-    </div>
-  </header>
-
+  <div class="topbar"><div class="wrap"><span class="top-location">Rochetaillée · Parc naturel régional du Pilat</span><span><a href="tel:+33665565531">06 65 56 55 31</a> · <a href="mailto:lamielleriedessequoias@gmail.com">Nous contacter</a></span></div></div>
+  <header><div class="wrap header-inner">
+    <a class="brand" href="#accueil"><span class="brand-mark" aria-hidden="true">✿</span><span>La Miellerie des Séquoias</span></a>
+    <nav aria-label="Navigation principale"><ul><li><a href="#apiculteur">L'apiculteur</a></li><li><a href="#produits">Nos produits</a></li><li><a href="#vente">Où nous trouver</a></li><li><a href="#contact">Contact</a></li></ul></nav>
+  </div></header>
   <main>
     <section class="hero" id="accueil">
-      <div class="hero-copy">
-        <span class="eyebrow">Apiculture au cœur du Pilat</span>
-        <h1>Le goût du Pilat, tout simplement.</h1>
-        <p>Des produits de la ruche récoltés avec soin par Loïc Gaulard, à Rochetaillée. Découvrez un savoir-faire local, au rythme des abeilles et des saisons.</p>
-        <a class="button" href="#produits">Découvrir les produits <span aria-hidden="true">&nbsp;→</span></a>
-      </div>
+      <div class="hero-copy"><span class="eyebrow">Apiculture au cœur du Pilat</span><h1>Le goût du Pilat, tout simplement.</h1><p>Des produits de la ruche récoltés avec soin par Loïc Gaulard, à Rochetaillée. Découvrez un savoir-faire local, au rythme des abeilles et des saisons.</p><a class="button" href="#produits">Découvrir les produits <span aria-hidden="true">&nbsp;→</span></a></div>
       <div class="hero-image" role="img" aria-label="Produits de la Miellerie des Séquoias"></div>
     </section>
-
-    <section id="apiculteur">
-      <div class="wrap intro">
-        <img class="portrait" src="images/IMG_20241122_113050-500x580.jpg" alt="Loïc Gaulard, apiculteur de la Miellerie des Séquoias" loading="lazy">
-        <div class="intro-copy">
-          <span class="eyebrow">Un apiculteur passionné</span>
-          <h2>À la rencontre de Loïc.</h2>
-          <p>Installée à Rochetaillée, au cœur du Parc naturel régional du Pilat, La Miellerie des Séquoias est l'exploitation de Loïc Gaulard. Il prend soin de ses colonies et propose des produits qui racontent la richesse florale de son territoire.</p>
-          <p>Loïc partage aussi sa passion au fil de conférences et de rencontres consacrées aux abeilles et à l'apiculture.</p>
-          <p class="signature">Loïc Gaulard <span aria-hidden="true">·</span> Apiculteur</p>
+    <section id="apiculteur"><div class="wrap intro">
+      <img class="portrait" src="images/IMG_20241122_113050-500x580.jpg" alt="Loïc Gaulard, apiculteur de la Miellerie des Séquoias" loading="lazy">
+      <div class="intro-copy"><span class="eyebrow">Un apiculteur passionné</span><h2>À la rencontre de Loïc.</h2><p>Installée à Rochetaillée, au cœur du Parc naturel régional du Pilat, La Miellerie des Séquoias est l'exploitation de Loïc Gaulard. Il prend soin de ses colonies et propose des produits qui racontent la richesse florale de son territoire.</p><p>Loïc partage aussi sa passion au fil de conférences et de rencontres consacrées aux abeilles et à l'apiculture.</p><p class="signature">Loïc Gaulard <span aria-hidden="true">·</span> Apiculteur</p></div>
+    </div></section>
+    <section class="products-section" id="produits"><div class="wrap">
+      <div class="section-lead"><span class="eyebrow">Du rucher à votre table</span><h2>Les produits de la miellerie.</h2><p>Une sélection de miels et de gourmandises inspirés par les saisons et les paysages du Pilat. Faites défiler pour découvrir les produits ; récoltes et disponibilités varient au fil de l'année.</p></div>
+      <div class="carousel" aria-label="Carrousel des produits">
+        <div class="products" id="product-carousel" tabindex="0" aria-label="Produits de la miellerie">
+          <article class="product"><img src="images/IMG_20231006_111151-660x540.jpg" alt="Sélection de pots de miel de la Miellerie des Séquoias" loading="lazy"><div class="product-copy"><span class="product-label">Récoltes du Pilat</span><h3>Miels de montagne</h3><p>Des miels aux nuances florales et fruitées, récoltés selon les floraisons et les saisons locales.</p></div></article>
+          <article class="product"><img src="images/IMG_20240925_082230-660x540.jpg" alt="Miel en rayon présenté avec les produits de la miellerie" loading="lazy"><div class="product-copy"><span class="product-label">Récolte naturelle</span><h3>Miel en rayon</h3><p>Le miel dans son rayon de cire, à savourer tel quel. Disponibilité selon la récolte.</p></div></article>
+          <article class="product"><img src="images/IMG_20231006_111151-660x540.jpg" alt="Pot de miel d'acacia de la Miellerie des Séquoias" loading="lazy"><div class="product-copy"><span class="product-label">Miel monofloral</span><h3>Miel d'acacia</h3><p>Un miel doux et délicat, apprécié pour sa texture fluide et ses notes florales.</p></div></article>
+          <article class="product"><img src="images/IMG_20231006_111151-660x540.jpg" alt="Pot de miel de pissenlit de la Miellerie des Séquoias" loading="lazy"><div class="product-copy"><span class="product-label">Miel de saison</span><h3>Miel de pissenlit</h3><p>Une récolte printanière aux arômes généreux, qui évoque les prairies en fleurs.</p></div></article>
+          <article class="product"><img src="images/IMG_20231006_111151-660x540.jpg" alt="Pot de miel de sapin de la Miellerie des Séquoias" loading="lazy"><div class="product-copy"><span class="product-label">Miel de forêt</span><h3>Miel de sapin</h3><p>Un miel de caractère aux notes boisées, issu des miellées de sapin selon les saisons.</p></div></article>
+          <article class="product"><img src="images/IMG_20240925_082230-660x540.jpg" alt="Produits de la ruche de la Miellerie des Séquoias" loading="lazy"><div class="product-copy"><span class="product-label">Produit de la ruche</span><h3>Gelée royale &amp; pollen</h3><p>Gelée royale fraîche du Pilat et pollen frais disponibles sur demande. Contactez Loïc pour réserver.</p></div></article>
+          <article class="product"><img src="images/Pain-depices-prime-au-miel-sequoias-660x540.png" alt="Pain d'épices pur miel primé de la Miellerie des Séquoias" loading="lazy"><div class="product-copy"><span class="product-label">Gourmandise primée</span><h3>Pain d'épices pur miel</h3><p>Une gourmandise au miel, récompensée par la médaille d'argent au Fermier d'Or 2026.</p></div></article>
         </div>
+        <div class="carousel-controls"><div class="carousel-buttons"><button class="carousel-button" type="button" data-direction="-1" aria-label="Produits précédents">‹</button><button class="carousel-button" type="button" data-direction="1" aria-label="Produits suivants">›</button></div><div class="carousel-dots" aria-label="Choisir un produit"></div><span class="eyebrow" id="carousel-status" aria-live="polite"></span></div>
       </div>
-    </section>
-
-    <section class="products-section" id="produits">
-      <div class="wrap">
-        <div class="section-lead">
-          <span class="eyebrow">Du rucher à votre table</span>
-          <h2>Les produits de la miellerie.</h2>
-          <p>Une sélection de miels et de gourmandises inspirés par les saisons et les paysages du Pilat. Les récoltes et disponibilités varient au fil de l'année.</p>
-        </div>
-        <div class="products">
-          <article class="product">
-            <img src="images/IMG_20231006_111151-660x540.jpg" alt="Sélection de pots de miel de la Miellerie des Séquoias" loading="lazy">
-            <div class="product-copy"><span class="product-label">Récoltes du Pilat</span><h3>Miels de montagne</h3><p>Des miels aux nuances florales et fruitées, récoltés selon les floraisons et les saisons locales.</p></div>
-          </article>
-          <article class="product">
-            <img src="images/IMG_20240925_082230-660x540.jpg" alt="Produits de la ruche de la Miellerie des Séquoias" loading="lazy">
-            <div class="product-copy"><span class="product-label">Produit de la ruche</span><h3>Gelée royale &amp; pollen</h3><p>Gelée royale fraîche du Pilat et pollen frais disponibles sur demande. Contactez Loïc pour réserver.</p></div>
-          </article>
-          <article class="product">
-            <img src="images/Pain-depices-prime-au-miel-sequoias-660x540.png" alt="Pain d'épices pur miel primé de la Miellerie des Séquoias" loading="lazy">
-            <div class="product-copy"><span class="product-label">Gourmandise primée</span><h3>Pain d'épices pur miel</h3><p>Une gourmandise au miel, récompensée par la médaille d'argent au Fermier d'Or 2026.</p></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="feature" aria-label="Bougies en cire d'abeille">
-      <img class="feature-image" src="images/IMG-20230611-WA0001-300x225.jpg" alt="Création artisanale de la Miellerie des Séquoias" loading="lazy">
-      <div class="feature-copy">
-        <span class="eyebrow">Le babet du Pilat</span>
-        <h2>La cire des abeilles, autrement.</h2>
-        <p>La miellerie propose aussi des bougies en cire d'abeille, ainsi que d'autres gourmandises autour du miel. Demandez les produits disponibles lors de votre visite ou de votre appel.</p>
-        <a class="button" href="#contact">Demander les disponibilités</a>
-      </div>
-    </section>
-
-    <section id="vente">
-      <div class="wrap sales">
-        <div class="sales-intro">
-          <span class="eyebrow">Retrouvez la miellerie</span>
-          <h2>À Rochetaillée et sur les marchés.</h2>
-          <p>Venez découvrir les produits directement au rucher ou retrouvez Loïc lors de rendez-vous locaux. Les dates de marchés et d'événements peuvent varier : contactez la miellerie avant de vous déplacer.</p>
-          <a class="button" href="https://www.google.com/maps/search/?api=1&query=513+Chemin+de+la+Violette%2C+42100+Rochetaill%C3%A9e%2C+France" target="_blank" rel="noopener noreferrer">Voir l'adresse <span aria-hidden="true">&nbsp;→</span></a>
-        </div>
-        <div class="sales-cards">
-          <article class="sales-card"><h3>Vente directe</h3><p>513 Chemin de la Violette, 42100 Rochetaillée. Du miel en libre-service est proposé à l'entrée, 7 jours sur 7. Paiement en espèces, par chèque ou par téléphone via QR code.</p></article>
-          <article class="sales-card"><h3>Marchés &amp; événements</h3><p>La miellerie participe notamment au marché Cours Fauriel à Saint-Étienne et à des événements locaux comme la Fête de la Pomme à Pélussin. Appelez pour connaître les prochaines dates.</p></article>
-        </div>
-      </div>
-      <div class="wrap market-strip" aria-label="Photos du point de vente et des produits">
-        <figure><img src="images/IMG_20250429_095729-225x300.jpg" alt="Point de vente en libre-service de la Miellerie des Séquoias" loading="lazy"><figcaption>Le miel en libre-service au rucher</figcaption></figure>
-        <figure><img src="images/IMG_20251226_100547-225x300.jpg" alt="Étal de produits de la miellerie" loading="lazy"><figcaption>Les produits disponibles sur place</figcaption></figure>
-        <figure><img src="images/B3A7053.jpeg" alt="Produits de la Miellerie des Séquoias" loading="lazy"><figcaption>Les saveurs du Pilat</figcaption></figure>
-      </div>
-    </section>
-
-    <section class="contact" id="contact">
-      <div class="wrap">
-        <span class="eyebrow">Une question, une envie ?</span>
-        <h2>Contactez la miellerie.</h2>
-        <p>Pour connaître les produits disponibles, réserver du pollen ou de la gelée royale, ou vous renseigner sur les prochains marchés, Loïc se fera un plaisir de vous répondre.</p>
-        <div class="contact-actions">
-          <a class="button" href="tel:+33665565531">Appeler le 06 65 56 55 31</a>
-          <a class="button secondary" href="mailto:lamielleriedessequoias@gmail.com">Écrire un e-mail</a>
-        </div>
-        <address class="address">La Miellerie des Séquoias · 513 Chemin de la Violette<br>42100 Rochetaillée, France</address>
-      </div>
-    </section>
+    </div></section>
+    <section class="feature" aria-label="Bougies en cire d'abeille"><img class="feature-image" src="images/IMG-20230611-WA0001-300x225.jpg" alt="Création artisanale de la Miellerie des Séquoias" loading="lazy"><div class="feature-copy"><span class="eyebrow">Le babet du Pilat</span><h2>La cire des abeilles, autrement.</h2><p>La miellerie propose aussi des bougies en cire d'abeille, ainsi que d'autres gourmandises autour du miel. Demandez les produits disponibles lors de votre visite ou de votre appel.</p><a class="button" href="#contact">Demander les disponibilités</a></div></section>
+    <section id="vente"><div class="wrap sales">
+      <div class="sales-intro"><span class="eyebrow">Retrouvez la miellerie</span><h2>À Rochetaillée et sur les marchés.</h2><p>Venez découvrir les produits directement au rucher ou retrouvez Loïc lors de rendez-vous locaux. Les dates de marchés et d'événements peuvent varier : contactez la miellerie avant de vous déplacer.</p><a class="button" href="https://www.google.com/maps/search/?api=1&amp;query=513+Chemin+de+la+Violette%2C+42100+Rochetaill%C3%A9e%2C+France" target="_blank" rel="noopener noreferrer">Voir l'adresse <span aria-hidden="true">&nbsp;→</span></a></div>
+      <div class="sales-cards"><article class="sales-card"><h3>Vente directe</h3><p>513 Chemin de la Violette, 42100 Rochetaillée. Du miel en libre-service est proposé à l'entrée, 7 jours sur 7. Paiement en espèces, par chèque ou par téléphone via QR code.</p></article><article class="sales-card"><h3>Marchés &amp; événements</h3><p>La miellerie participe notamment au marché Cours Fauriel à Saint-Étienne et à des événements locaux comme la Fête de la Pomme à Pélussin. Appelez pour connaître les prochaines dates.</p></article></div>
+    </div><div class="wrap market-strip" aria-label="Photos du point de vente et des produits"><figure><img src="images/IMG_20250429_095729-225x300.jpg" alt="Point de vente en libre-service de la Miellerie des Séquoias" loading="lazy"><figcaption>Le miel en libre-service au rucher</figcaption></figure><figure><img src="images/IMG_20251226_100547-225x300.jpg" alt="Étal de produits de la miellerie" loading="lazy"><figcaption>Les produits disponibles sur place</figcaption></figure><figure><img src="images/B3A7053.jpeg" alt="Produits de la Miellerie des Séquoias" loading="lazy"><figcaption>Les saveurs du Pilat</figcaption></figure></div></section>
+    <section class="contact" id="contact"><div class="wrap"><span class="eyebrow">Une question, une envie ?</span><h2>Contactez la miellerie.</h2><p>Pour connaître les produits disponibles, réserver du pollen ou de la gelée royale, ou vous renseigner sur les prochains marchés, Loïc se fera un plaisir de vous répondre.</p><div class="contact-actions"><a class="button" href="tel:+33665565531">Appeler le 06 65 56 55 31</a><a class="button secondary" href="mailto:lamielleriedessequoias@gmail.com">Écrire un e-mail</a></div><address class="address">La Miellerie des Séquoias · 513 Chemin de la Violette<br>42100 Rochetaillée, France</address></div></section>
   </main>
   <footer><div class="wrap"><span>© 2026 La Miellerie des Séquoias · Loïc Gaulard</span><a href="mailto:lamielleriedessequoias@gmail.com">lamielleriedessequoias@gmail.com</a></div></footer>
+  <script>
+    (() => {
+      const track = document.querySelector('#product-carousel');
+      const dotsContainer = document.querySelector('.carousel-dots');
+      const status = document.querySelector('#carousel-status');
+      const slides = [...track.querySelectorAll('.product')];
+      let activeIndex = 0;
+      const goTo = (index) => {
+        activeIndex = (index + slides.length) % slides.length;
+        slides[activeIndex].scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth', block: 'nearest', inline: 'start' });
+        updateControls();
+      };
+      const updateControls = () => {
+        dotsContainer.querySelectorAll('button').forEach((dot, i) => dot.setAttribute('aria-current', String(i === activeIndex)));
+        status.textContent = `${activeIndex + 1} / ${slides.length}`;
+      };
+      slides.forEach((slide, i) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'carousel-dot';
+        dot.setAttribute('aria-label', `Afficher le produit ${i + 1} : ${slide.querySelector('h3').textContent}`);
+        dot.addEventListener('click', () => goTo(i));
+        dotsContainer.append(dot);
+      });
+      document.querySelectorAll('.carousel-button').forEach(button => button.addEventListener('click', () => goTo(activeIndex + Number(button.dataset.direction))));
+      track.addEventListener('keydown', event => {
+        if (event.key === 'ArrowRight') { event.preventDefault(); goTo(activeIndex + 1); }
+        if (event.key === 'ArrowLeft') { event.preventDefault(); goTo(activeIndex - 1); }
+      });
+      let scrollTimer;
+      track.addEventListener('scroll', () => {
+        clearTimeout(scrollTimer);
+        scrollTimer = setTimeout(() => {
+          const left = track.getBoundingClientRect().left;
+          const closest = slides.reduce((best, slide, i) => Math.abs(slide.getBoundingClientRect().left - left) < Math.abs(slides[best].getBoundingClientRect().left - left) ? i : best, 0);
+          activeIndex = closest;
+          updateControls();
+        }, 100);
+      }, { passive: true });
+      updateControls();
+    })();
+  </script>
 </body>
 </html>
